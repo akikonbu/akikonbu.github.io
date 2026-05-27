@@ -1,58 +1,27 @@
+<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <title>秋工パソコン部ホームページ</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="images/icon.png" type="image/png">
-    <style>
-    #comment-form-section {
-        margin: 20px 0;
-        padding: 15px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        background-color: #f9f9f9;
-    }
-    #comment-form-section textarea {
-        width: 100%;
-        max-width: 400px;
-        height: 100px;
-        padding: 10px;
-        border: 1px solid #aaa;
-        border-radius: 4px;
-        box-sizing: border-box;
-        resize: vertical;
-        font-family: inherit;
-    }
-    #comment-form-section button {
-        margin-top: 10px;
-        padding: 8px 20px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    #comment-form-section button:hover {
-        background-color: #0056b3;
-    }
-    </style>
 </head>
 <body>
 
-<header><h1>パソコン部（こんぶ）</h1>
+<header><h1>
+    <img src="images/icon.png" alt="icon" width="120">
+    <br>パソコン部（こんぶ）
+</h1>
     <nav>
-        <a href="index.html">　　ホーム　　</a>
-        <a href="activities.html">　　活動記録　　</a>
-        <a href="spec.html">　　使用機器　　</a>
-        <a href="view.html">　　Q&A　　</a>
-        <a href="h">　　その他　　</a>
+        <a href="index.html">ホーム</a>
+        <a href="activities.html">活動記録</a>
+        <a href="spec.html">使用機器</a>
+        <a href="">その他</a>
     </nav>
 </header>
 
 <main>
     <h2>Welcome to AkiKonbu!</h2>
-    <img src="images/icon.png" alt="icon" width="240">
 
     <p>ここはパソコン部のホームページです！</p>
     <p>プログラミングやゲーム制作など、楽しくのびのび活動しています！</p>
@@ -79,40 +48,10 @@
     <a href="http://www.akiko-h.akita-pref.ed.jp/club/bunkabu/pasokon.html">秋田工業高校</a>
 
     <h2>コメント</h2>
-<form id="comment-form-section">
-    <textarea id="comment-text" name="text" placeholder="ここにコメントを入力してください" required></textarea><br>
-    <button type="button" onclick="submitComment()">送信する</button>
-</form>
+    <input type="text" id="commentInput" placeholder="コメントを書く">
+    <button onclick="addComment()">投稿</button>
 
-<script>
-function submitComment() {
-    const text = document.getElementById('comment-text').value;
-    if (!text) return alert("内容を入力してください");
-
-    const formData = new URLSearchParams();
-    formData.append('text', text);
-
-    fetch('/api/post_comment', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: formData
-    })
-    .then(async response => {
-        if (response.ok) {
-            const data = await response.json();
-            alert(data.message);
-            location.reload();
-        } else {
-            const errText = await response.text();
-            console.error("エラー詳細:", errText);
-            alert("エラーが発生しました(404等)。");
-        }
-    })
-    .catch(err => console.error("通信エラー:", err));
-}
-</script>
-    <p><a href="/view.html">→ 公開中のコメントを見る</a></p>
-
+    <ul id="commentList"></ul>
 </main>
 
 <footer>
