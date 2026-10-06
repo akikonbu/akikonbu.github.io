@@ -1,0 +1,6 @@
+Arch Linux
+今回試した環境はFedora 44 KDE PlasmaのKVM上での動作である。実際の動作でもおそらく参考になるはず。不明な部分は[google.com/?udm=50](# これについての解説ページのリンク)二質問することを推奨。
+free spaceを選択してNewを押してから512MでEnterしてTypeからEFI Systemを選択（一番上）。この状態でデバイスリストがFreeSpaceと/dev/sda1のようになっているはず。残りをNewで選択、残りすべての容量を割り当てて良い。Typeは通常位置から３つほど下のLinuxroot(x86-64)を選択。そして、Writeを押してから？のところで"yes"を入力。そのあとQUITで終了し、次にlsblkを入力。先程作成したデバイスが下に二個表示されるはず。もし出なかったら強制認識partprobe /dev/vdaを使用。その後デバイスのマウントを行う。mount /dev/vda2 /mnt、mkdir -p /mnt/boot、mount /dev/vda1 /mnt/boot。もう一度lsblkすると、先程作ったおそらくした２つのパーティションに/mnt, \mnt/bootがでるはず。これでインストール準備は完了。というわけでこれからlinuxを入れていく。まずパッケージpacstrap -K /mnt base linux linux-firmware nano vim networkmanager grub efibootmgr。少々時間がかかる。
+
+KVM
+Karnel Virtual Machine。Linuxで動作する   [Virtual Machine](# VMの解説ページのリンク)の一つだが。CPU自家で使えるため非常に高効率で動作する。Virtual Boxとかよりは数倍良い。Vmwareよりも体感早いし、慣れれば非常にセットアップが楽。
