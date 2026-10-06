@@ -1,0 +1,143 @@
+
+        /* 全体リセットと基本設定 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: #333;
+            background-color: #fcfcfc;
+        }
+
+        /* ヘッダー：上部全体を少し青みがかった灰色で覆う */
+        .header {
+            background-color: #b0c4de; /* 青みがかった灰色（LightSteelBlue） */
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end; /* 右下の文字・アイコンに合わせる配置 */
+        }
+        .header-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .header-nav {
+            display: flex;
+            gap: 20px;
+            margin-bottom: -2px; /* 右下に寄せる微調整 */
+        }
+
+        /* ヘッダーナビゲーション：ボタンっぽくない、そのままのリンクスタイル */
+        .nav-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #7f8c8d; /* 灰色の文字 */
+            font-size: 13px; /* 少し小さめ */
+            gap: 4px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .nav-link svg {
+            width: 14px; /* 小さめのアイコン */
+            height: 14px;
+            fill: #7f8c8d; /* 灰色のSVGアイコン */
+        }
+        .nav-link:hover {
+            color: #34495e;
+            text-decoration: underline; /* ホバー時に下線を表示 */
+        }
+        .nav-link:hover svg {
+            fill: #34495e;
+        }
+
+        /* メインコンテンツ（1カラム） */
+        .main-container {
+            flex: 1;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .content {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 4px;
+        }
+        .content h1 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #b0c4de;
+            padding-bottom: 8px;
+        }
+        .content h2 {
+            font-size: 18px;
+            margin: 25px 0 10px 0;
+            padding-left: 8px;
+            border-left: 4px solid #b0c4de;
+        }
+        .content p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* フッター：下部全体を少し灰色にする */
+        .footer {
+            background-color: #eaeaea; /* 少し灰色 */
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            min-height: 80px;
+        }
+
+        /* 左側：部活のアイコン設置スペース */
+        .club-icon-area {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 40px;
+        }
+        .club-icon-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* 中央寄せ：上がマニュアルについて、下がcopyの2行構造 */
+        .footer-center-content {
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+        .footer-about-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        .footer-about-link:hover {
+            color: #34495e;
+            text-decoration: underline;
+        }
+        .footer-about-link svg {
+            width: 16px; /* Info Mark文字の大きさくらい */
+            height: 16px;
+            fill: currentcolor;
+        }
+        .copyright {
+            font-size: 11px; /* &copy少し小さめ */
+            color: #95a5a6;
+        }
